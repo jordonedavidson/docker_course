@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t jordonatmta/node .
   - docker images jordonatmta/node
+
+before_deploy:
+  - docker login -u jordonatmta -p nWfmNHcuCKi5neY
+
+deploy:
+  provider: script
+  script: docker push jordonatmta/node
+  on:
+    branch: master
